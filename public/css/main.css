@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'siny';
+    src:url('../../public/font/siny.ttf') format('truetype'); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+/** {*/
+    /*font-family: siny;*/
+/*}*/
+
+/*.head {*/
+    /*height: 50px;*/
+/*}*/
+
+.active {
+    color: red;
+}
+.head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.foot{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+body{
+    margin:0;
+    padding:0;
+}
+.center_background{
+    background-repeat: no-repeat;
+    background-position:center;
+}

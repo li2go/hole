@@ -1,0 +1,45 @@
+.article {
+
+}
+
+.article .title {
+    font-family: monospace;
+    font-size: 32px;
+    text-align: center;
+}
+
+.article .title2 {
+    text-align: center;
+    padding: 1rem;
+
+}
+
+.article .content {
+    padding: 1rem;
+    /* border-spacing: 2px; */
+    border-radius: 3px;
+    box-shadow: rgba(35, 41, 28, 0.77) 0 0 2px;
+    margin: 1rem;
+}
+
+.article .post {
+
+}
+
+.article .social {
+    box-shadow: rgba(35, 41, 28, 0.77) 0 0 2px;
+
+    padding: 1rem;
+}
+
+.article .auth {
+
+}
+
+.title2 > span {
+    padding: 1rem;
+}
+
+.head {
+
+}

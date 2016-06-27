@@ -1,6 +1,18 @@
 react-hot-boilerplate
 =====================
 
+
+###todos
+
+global Message
+
+Message 
+
+
+
+
+
+
 The minimal dev environment to enable live-editing React components.
 
 ### Usage
