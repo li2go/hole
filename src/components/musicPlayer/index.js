@@ -5,9 +5,8 @@ import React, { Component, PropTypes } from 'react';
 import Tappable from 'react-tappable';
 import _ from 'lodash';
 import MusicList from './MusicList.js';
-import MusicPost from './MusicPost.js'
 import theme from './theme.js'
-
+import ControlGroup from './ControlGroup.js';
 
 //console.error = function () {
 //  var args = Array.prototype.slice.call(arguments);
@@ -39,8 +38,20 @@ export default class MusicPlayer extends Component {
 
   initAudio() {
     this.audio = document.getElementById('x-audio');
+    this.setState({
+      volume: this.audio.volume*100
+    });
+    this.audio.ontimeupdate=()=>{
+      this.updateMusicInfo()
+    }
   }
 
+  updateMusicInfo(){
+    this.setState({
+      musicTotalTime:this.audio.duration,
+      musicCurrentTime:this.audio.currentTime
+    })
+  }
   toggleList() {
     this.setState({
       isMusicListShow: !this.state.isMusicListShow
@@ -48,6 +59,7 @@ export default class MusicPlayer extends Component {
   }
 
   toggleMute() {
+    this.audio.muted=!this.state.isMute;
     this.setState({
       isMute: !this.state.isMute
     })
@@ -59,6 +71,14 @@ export default class MusicPlayer extends Component {
     }
     if (!this.state.current.url) {
       //没有选中的，如果列表里面有则默认播放第一首音乐
+      if(this.props.list){
+        this.setState({
+          isPlaying: true,
+          current:this.props.list[0]
+        }, ()=> {
+          this.audio.play();
+        })
+      }
       return;
     }
 
@@ -69,7 +89,7 @@ export default class MusicPlayer extends Component {
         this.audio.pause();
       })
     } else {
-      this.setState({
+     this.setState({
         isPlaying: true
       }, ()=> {
         this.audio.play();
@@ -78,12 +98,11 @@ export default class MusicPlayer extends Component {
   }
 
   handleMusicPlay(music) {
-    console.log(music);
     if (music.id !== this.state.current) {
       this.setState({
         current: music,
         isPlaying: true,
-        volume: 50,
+        //volume: 50,
       }, ()=> {
         this.audio.play();
       })
@@ -101,8 +120,9 @@ export default class MusicPlayer extends Component {
 
   handleVolumeChange(value) {
     this.setState({
-      volume:value
-    })
+      volume: value
+    });
+    this.audio.volume = value / 100;
   }
 
   handleChangeMusic(control) {
@@ -155,19 +175,19 @@ export default class MusicPlayer extends Component {
         onFavorClick={this.handleMusicFavor.bind(this)}
         />}
 
-      <Controller
+      <ControlGroup
         toggleList={this.toggleList.bind(this)}
         isListShow={this.state.isMusicListShow}
         togglePlay={this.togglePlay.bind(this)}
         isPlaying={this.state.isPlaying}
         toggleMute={this.toggleMute.bind(this)}
         isMute={this.state.isMute}
+        music={this.state.current}
         onChange={this.handleChangeMusic.bind(this)}
         onValumeChange={this.handleVolumeChange.bind(this)}
-        progress={this.getCurrentProgress.bind(this)}
+        progress={this.getCurrentProgress()}
         volume={this.state.volume}
         />
-      <MusicPost data={this.state.current} isPlaying={this.state.isPlaying}/>
       <audio id={'x-audio'}
              src={this.getMusicURL()}></audio>
     </div>
@@ -175,69 +195,10 @@ export default class MusicPlayer extends Component {
 
 }
 
-class Controller extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  handleNext() {
-
-  }
-
-  handlePrevious() {
-
-  }
-
-  handleVolumeChange(e) {
-    this.props.onValumeChange(e.target.value)
-  }
-
-  render() {
-    var styles = {
-      pre: {},
-      next: {}, play: {}
-    };
-    return <div>
-      <button onClick={this.props.toggleList}>{this.props.isListShow ? '隐藏列表' : '显示列表'}</button>
-      <button style={styles.next} onClick={this.handleNext.bind(this)}>下</button>
-      <button style={styles.play} onClick={this.props.togglePlay}>{this.props.isPlaying ? '暂停' : '播放'}</button>
-      <button style={styles.pre} onClick={this.handlePrevious.bind(this)}>上</button>
-      <Progress progress={this.props.progress}></Progress>
-      <Volume value={this.props.volume}
-              isMute={this.props.isMute}
-              toggleMute={this.props.toggleMute}
-              onChange={this.handleVolumeChange.bind(this)}/>
-    </div>
+function update(audio,handle){
+  audio.canPlayThrough=function(){
+    handle()
   }
 }
-
-
-class Volume extends Component {
-  render() {
-    return <div>
-      <div onClick={this.props.toggleMute}>{this.props.isMute ? '静了' : '正常'}</div>
-      <input type="range"
-             name="volume"
-             step="1"
-             min="1"
-             onChange={this.props.onChange}
-             value={this.props.value}
-             max="100"/>
-      Volume {this.props.value}
-    </div>
-  }
-}
-Volume.propTypes = {
-  value: PropTypes.any,
-  isMute: PropTypes.bool,
-  onChange: PropTypes.func,
-  toggleMute: PropTypes.func
-};
-class Progress extends Component {
-  render() {
-    return <div>
-      {this.props.progress.total}
-      {this.props.progress.current}
-    </div>
-  }
-}
+//当可以开始播放的时候

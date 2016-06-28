@@ -10,19 +10,15 @@ export default [{
     id: 1998,
     name: '小玉',
     avatar:{
-      thumb:'',
+      thumb:'http://wx.qlogo.cn/mmopen/92JXAy2Ir8mZY4ZJKMxm2ELa2uQvJzX4RvEibYyQpgiaff7PvvWNpY8LscwMibNfguHd4Bx1iaFtDw3saQkf7YPVz1r6DzzricbZD/0',
       400:'',
       1200:''
     },
   },
   album: {
-    id: 1998,
-    name: '小玉',
-    avatar:{
-      thumb:'',
-      400:'',
-      1200:''
-    },
+    name: '冬的河',
+    id: 1233,
+    thumb: 'http://i0.sinaimg.cn/ent/y/2011-11-16/U5956P28T3D3482905F326DT20111116155045.jpg'
   },
   size: '20M',
   length: '02:23'
@@ -39,7 +35,7 @@ export default [{
       id: 1998,
       name: '小玉',
       avatar:{
-        thumb:'',
+        thumb:'http://wx.qlogo.cn/mmopen/92JXAy2Ir8mZY4ZJKMxm2ELa2uQvJzX4RvEibYyQpgiaff7PvvWNpY8LscwMibNfguHd4Bx1iaFtDw3saQkf7YPVz1r6DzzricbZD/0',
         400:'',
         1200:''
       },
@@ -47,7 +43,7 @@ export default [{
     album: {
       name: '冬天的我的河',
       id: 1233,
-      thumb: 'http://sdsad.dasd.dasda'
+      thumb: 'http://i0.sinaimg.cn/ent/y/2011-11-16/U5956P28T3D3482905F326DT20111116155045.jpg'
     },
     size: '20M',
     length: '02:23'
@@ -64,7 +60,7 @@ export default [{
       id: 1998,
       name: '小玉',
       avatar:{
-        thumb:'',
+        thumb:'http://wx.qlogo.cn/mmopen/92JXAy2Ir8mZY4ZJKMxm2ELa2uQvJzX4RvEibYyQpgiaff7PvvWNpY8LscwMibNfguHd4Bx1iaFtDw3saQkf7YPVz1r6DzzricbZD/0',
         400:'',
         1200:''
       },
@@ -72,7 +68,7 @@ export default [{
     album: {
       name: '冬天的我的河',
       id: 1233,
-      thumb: 'http://sdsad.dasd.dasda'
+      thumb: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQIel2SsQbVXflRK6DqkJelTPWVZoQjVWuGqR2QZOsyf1lIdxhM'
     },
     size: '20M',
     length: '02:23'

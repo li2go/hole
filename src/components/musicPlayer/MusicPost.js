@@ -14,14 +14,25 @@ export default class MusicPost extends Component {
         width: 100,
         height: 100,
         borderRadius: 50,
-        backgroundColor: 'lightgray'
+        backgroundColor: 'lightgray',
+        position:'relative',
+        textAlign:'center',
+        overflow:'hidden',
+        top:'-50px'
+      },align:{
+        position:'absolute',
+        left:0,
+        top:0,
+        bottom:0,
+        right:0,
+        margin:'auto'
       }
     };
     var content;
     if (data.author) {
-      content = <img src={data.author.avatar.thumb} alt=""/>
+      content = <img className='avatar100' src={data.author.avatar.thumb} alt=""/>
     } else {
-      content = <div>
+      content = <div style={styles.align}>
         ；）
       </div>
     }
