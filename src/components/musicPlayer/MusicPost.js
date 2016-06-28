@@ -25,7 +25,7 @@ export default class MusicPost extends Component {
         ；）
       </div>
     }
-    return <div className={classNames({rotate:isPlaying,'animated':isPlaying,'infinite':isPlaying})} style={styles.avatarWrap} onClick={this.props.onClick}>
+    return <div className={classNames({rotate:isPlaying,'infinite':isPlaying})} style={styles.avatarWrap} onClick={this.props.onClick}>
       {content}
     </div>;
 

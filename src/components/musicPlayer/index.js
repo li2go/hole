@@ -99,7 +99,10 @@ export default class MusicPlayer extends Component {
     console.log(music)
   }
 
-  handleVolumeChange() {
+  handleVolumeChange(value) {
+    this.setState({
+      volume:value
+    })
   }
 
   handleChangeMusic(control) {
@@ -164,7 +167,7 @@ export default class MusicPlayer extends Component {
         progress={this.getCurrentProgress.bind(this)}
         volume={this.state.volume}
         />
-        <MusicPost data={this.state.current} isPlaying={this.state.isPlaying}/>
+      <MusicPost data={this.state.current} isPlaying={this.state.isPlaying}/>
       <audio id={'x-audio'}
              src={this.getMusicURL()}></audio>
     </div>
@@ -185,8 +188,8 @@ class Controller extends Component {
 
   }
 
-  handleVolumeChange() {
-    this.props.onValumeChange()
+  handleVolumeChange(e) {
+    this.props.onValumeChange(e.target.value)
   }
 
   render() {
@@ -201,7 +204,8 @@ class Controller extends Component {
       <button style={styles.pre} onClick={this.handlePrevious.bind(this)}>上</button>
       <Progress progress={this.props.progress}></Progress>
       <Volume value={this.props.volume}
-              onMute={this.props.toggleMute}
+              isMute={this.props.isMute}
+              toggleMute={this.props.toggleMute}
               onChange={this.handleVolumeChange.bind(this)}/>
     </div>
   }
@@ -211,10 +215,24 @@ class Controller extends Component {
 class Volume extends Component {
   render() {
     return <div>
+      <div onClick={this.props.toggleMute}>{this.props.isMute ? '静了' : '正常'}</div>
+      <input type="range"
+             name="volume"
+             step="1"
+             min="1"
+             onChange={this.props.onChange}
+             value={this.props.value}
+             max="100"/>
       Volume {this.props.value}
     </div>
   }
 }
+Volume.propTypes = {
+  value: PropTypes.any,
+  isMute: PropTypes.bool,
+  onChange: PropTypes.func,
+  toggleMute: PropTypes.func
+};
 class Progress extends Component {
   render() {
     return <div>
