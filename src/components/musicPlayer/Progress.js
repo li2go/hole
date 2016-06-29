@@ -12,13 +12,14 @@ export default class Progress extends Component {
     var percent = (current / total * 100) + '%';
     var totalTime = getTime(parseInt(total));
     return <div className='player-control-progress'>
-      <span style={{fontSize:'10px'}}>
-        {totalTime}
-      </span>
+
       <div className='player-control-progress-line-wrap'>
         <div style={{transition:'width 0.3s',backgroundColor:'gray',height:2,width:percent,display:'inline-block'}}></div>
         <div className='player-control-progress-line-p' style={{position:'absolute',left:percent}}></div>
       </div>
+      <span className='player-control-progress-tip'>
+        {totalTime}
+      </span>
     </div>
   }
 }

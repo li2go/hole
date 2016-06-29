@@ -12,15 +12,7 @@ export default class ComponentFoot extends Component {
     }
 
     render() {
-        const style = {
-            height: '60px',
-            bottom: 0,
-            left: 0,
-            width:'100%',
-            textAlign:'center',
-            paddingTop:'2rem'
-        };
-        return <div className={'foot'} style={style}>
+        return <div className={'foot'}>
 
             我是个脚部
         </div>

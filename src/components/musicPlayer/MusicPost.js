@@ -11,14 +11,13 @@ export default class MusicPost extends Component {
     var {data,isPlaying}=this.props;
     var styles = {
       avatarWrap: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-        backgroundColor: 'lightgray',
+        width: 50,
+        height: 50,
+        borderRadius: '50%',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         position:'relative',
         textAlign:'center',
         overflow:'hidden',
-        top:'-50px'
       },align:{
         position:'absolute',
         left:0,
@@ -30,13 +29,13 @@ export default class MusicPost extends Component {
     };
     var content;
     if (data.author) {
-      content = <img className='avatar100' src={data.author.avatar.thumb} alt=""/>
+      content = <img className='avatar50' src={data.author.avatar.thumb} alt=""/>
     } else {
       content = <div style={styles.align}>
         ；）
       </div>
     }
-    return <div className={classNames({rotate:isPlaying,'infinite':isPlaying})} style={styles.avatarWrap} onClick={this.props.onClick}>
+    return <div className={classNames({rotate:isPlaying,'infinite':isPlaying},'avatar-wrap')} style={styles.avatarWrap} onClick={this.props.onClick}>
       {content}
     </div>;
 

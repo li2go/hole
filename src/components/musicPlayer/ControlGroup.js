@@ -25,10 +25,6 @@ export default class ControlGroup extends Component {
   }
 
   render() {
-    var styles = {
-      pre: {},
-      next: {}, play: {}
-    };
     return <div className='player-control-wrap'>
       <div className='player-control-post'>
 
@@ -37,24 +33,38 @@ export default class ControlGroup extends Component {
       </div>
 
       <div className='player-control-buttons'>
-        <button onClick={this.props.toggleList} style={getListButtonStyle(this.props.isListShow)}>{this.props.isListShow ? '列表' : 'List'}</button>
-        <button style={styles.next} onClick={this.handleNext.bind(this)}>下</button>
-        <button style={styles.play} onClick={this.props.togglePlay}>{this.props.isPlaying ? '暂停' : '播放'}</button>
-        <button style={styles.pre} onClick={this.handlePrevious.bind(this)}>上</button>
+        <button className='player-control button-prev'
+                onClick={this.handlePrevious.bind(this)}>
+          <i className='iconfont icon-mediaprevious'></i>
+        </button>
+
+        <button className='player-control' onClick={this.props.togglePlay}>
+
+          {this.props.isPlaying
+            ? <i className='iconfont icon-mediapause'></i>
+            : <i className='iconfont icon-mediapause'></i>}
+
+        </button>
+        <button className='player-control button-next'
+                onClick={this.handleNext.bind(this)}>
+          <i  className='iconfont icon-medianext'></i>
+        </button>
+        <Progress progress={this.props.progress}></Progress>
         <Volume value={this.props.volume}
                 isMute={this.props.isMute}
                 toggleMute={this.props.toggleMute}
                 onChange={this.handleVolumeChange.bind(this)}/>
+        <button className='player-control button-list' onClick={this.props.toggleList}>{getListButton(this.props.isListShow)}</button>
+
       </div>
-      <Progress progress={this.props.progress}></Progress>
 
     </div>
   }
 }
-function getListButtonStyle(high){
-  if(high){
-
-  }else{
-
+function getListButton(high) {
+  if (high) {
+    return <i className='iconfont icon-alignjustify'></i>
+  } else {
+    return <i className='iconfont icon-alignjustify'></i>
   }
 }

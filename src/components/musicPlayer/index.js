@@ -163,7 +163,7 @@ export default class MusicPlayer extends Component {
   }
 
   render() {
-    return <div>
+    return <div className='music-player-wrap'>
       {this.state.isMusicListShow && <MusicList
         list={this.props.list}
         onClose={()=>{this.setState({isMusicListShow:false})}}

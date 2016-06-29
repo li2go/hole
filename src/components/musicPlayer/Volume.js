@@ -6,10 +6,13 @@ import _ from 'lodash';
 
 export default class Volume extends Component {
   render() {
-    return <div>
+    return <div className='player-control-volume'>
       <div className='player-button-mute-1'
            onClick={this.props.toggleMute}>
-        {this.props.isMute ? '≈' : '√'}
+        {this.props.isMute
+          ? <i style={{fontSize:35}} className='iconfont icon-off'></i>
+          : <i style={{fontSize:35}} className='iconfont icon-on'/>
+        }
       </div>
       <input type="range"
              name="volume"

@@ -40,9 +40,19 @@ export default class MusicList extends Component {
     var list = this.props.list || [];
 
     return <div className='music-list-wrap'>
-      <div onClick={this.props.onClose}>X</div>
-      {list.length > 0 && this.renderList(list)}
-      {list.length <= 0 && this.renderBlank()}
+      <div className='list-head'>
+        <div className='button-close' onClick={this.props.onClose}>
+          <i className='iconfont icon-guanbi'></i>
+        </div>
+      </div>
+      <div className='list-body'>
+
+        {list.length > 0 && this.renderList(list)}
+        {list.length <= 0 && this.renderBlank()}
+      </div>
+      <div className='list-foot'>
+
+      </div>
     </div>
   }
 
@@ -52,7 +62,7 @@ MusicList.propTypes = {
   //当列表数据为空时的显示信息。
   blankContent: PropTypes.any,
   current: PropTypes.any,
-  onClose:PropTypes.func,//关闭
+  onClose: PropTypes.func,//关闭
   onPlayClick: PropTypes.func,
   onDownloadClick: PropTypes.func,
   onFavorClick: PropTypes.func

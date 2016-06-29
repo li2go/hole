@@ -1,10 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
+var localIPAddress=require('./localIPAddress');
 
 module.exports = {
     devtool: 'eval',
     entry: [
-        'webpack-dev-server/client?http://localhost:3003',
+        'webpack-dev-server/client?http://'+localIPAddress+':10086',
         'webpack/hot/only-dev-server',
         './src/index'
     ],

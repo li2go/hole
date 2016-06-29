@@ -26,8 +26,8 @@ class Main extends Component {
       <div>
         <ComponentHead location={this.props.location} userInfo={{}}></ComponentHead>
 
-        <div style={{textAlign:'center'}}>{this.props.children}</div>
-        <div style={{position:'fixed',bottom:'0px',left:'0px',zIndex:9999,backgroundColor:'black',width:'100%'}}>
+        <div className='body'>{this.props.children}</div>
+        <div style={{position:'fixed',bottom:'0px',width:'100%'}}>
           <MusicPlayer list={listData}/>
         </div>
         <ComponentFoot></ComponentFoot>

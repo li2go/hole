@@ -1,6 +1,8 @@
 require('../public/css/main.css');
 require('../public/css/animate.full.css');
 require('../public/css/animation.css');
+require('../public/font/iconfont.css');
+require('../public/font/iconfont.ttf');
 // Needed for onTouchTap
 // Can go away when react 1.0 release
 // Check this repo:

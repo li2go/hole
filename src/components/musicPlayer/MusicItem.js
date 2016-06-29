@@ -48,24 +48,18 @@ export default class MusicItem extends Component {
           lineHeight: '12px',
           backgroundColor: isPlaying ? 'lightgray':'rgba(122,122,122,0.3)'
         }
-      },
-      index: {color: 'gray', display: 'inline-block', width: '60px'},
-      download: {width:'40px',display: 'inline-block',cursor:'pointer'},
-      title: {width: '200px', overflow: 'hidden',display: 'inline-block',whiteSpace:'nowrap',textOverflow:'ellipsis',cursor:'pointer'},
-      hot:{width:'100px',display:'inline-block'},
-      author:{width:'100px',display: 'inline-block',cursor:'pointer'},
-      album:{width:'100px',display: 'inline-block',cursor:'pointer'}
+      }
     };
     var {data,index,isPlaying}=this.props;
-    return <div onDoubleClick={this.handlePlay.bind(this)}
+    return <div className='music-list-item' onDoubleClick={this.handlePlay.bind(this)}
                 style={styles.wrap(isPlaying)}>
-      <span style={styles.index}>{formatIndex(index)}</span>
+      <span className='index'>{formatIndex(index)}</span>
       {getFavorIcon(data.isFavor, this.handleFavor.bind(this))}
-      <span onClick={this.handleDownload.bind(this)} style={styles.download}>下载</span>
-      <span style={styles.title}>{data.title}</span>
-      <span onClick={this.handleAuthorClick.bind(this)} style={styles.author}>{data.author.name || '未知'}</span>
-      <span onClick={this.handleAlbumClick.bind(this)} style={styles.album}>{data.album.name || '未知'}</span>
-      <span style={styles.hot}>{hot(data.hot)}</span>
+      <span className='download' onClick={this.handleDownload.bind(this)} >下载</span>
+      <span className='title'>{data.title}</span>
+      <span className='author'  onClick={this.handleAuthorClick.bind(this)} >{data.author.name || '未知'}</span>
+      <span className='album' onClick={this.handleAlbumClick.bind(this)}>{data.album.name || '未知'}</span>
+      <span className='hot' >{hot(data.hot)}</span>
     </div>
   }
 
@@ -86,13 +80,18 @@ function getFavorIcon(isf, onClick) {
     favorWrap: {
       display: 'inline-block'
     }, favor: {
-      backgroundColor: isf ? 'red' : 'gray'
+      color: isf ? 'red' : 'gray'
     }
   };
+  var cls=isf ?'iconfont icon-yishoucang':'iconfont icon-shoucang';
+
   return <span
     onClick={onClick}
+    calssName='favor'
     style={styles.favorWrap}>
-    <i style={styles.favor}>心</i>
+    <i className={cls}
+       style={styles.favor}>
+    </i>
   </span>
 }
 

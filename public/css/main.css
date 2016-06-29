@@ -21,12 +21,15 @@
     width: 100%;
     z-index: 1;
 }
-.foot{
-    position: fixed;
-    bottom: 0;
-    left: 0;
+.body{
+    position: relative;
     width: 100%;
-    z-index: 1;
+    min-height: 100%;
+}
+.foot{
+    position: relative;
+    width: 100%;
+    height: auto;
 }
 body{
     margin:0;
